@@ -2,7 +2,7 @@ name: 'Docs'
 
 on:
   # This will run tests on pushes
-  # to master branch or on pull merges:
+  # to master branch and every monday:
   push:
     branches:
       - 'main'
