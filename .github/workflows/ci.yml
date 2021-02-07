@@ -29,7 +29,7 @@ jobs:
           qlot exec ros install cxxxr/sblint
       - name: Run Linter
         run: |
-          qlot exec sblint ultralisp.asd ultralisp-test.asd
+          qlot exec sblint cl-info.asd cl-info-test.asd cl-info-docs.asd
 
   tests:
     runs-on: ${{ matrix.os }}
