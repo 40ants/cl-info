@@ -31,7 +31,7 @@ jobs:
         run: |
           qlot exec sblint ultralisp.asd ultralisp-test.asd
 
-  run-tests:
+  tests:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.can-fail || false }}
     
