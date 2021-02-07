@@ -29,7 +29,7 @@ jobs:
           qlfile-template: |
             github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
       
-      - uses: 40ants/cl-info/.github/actions/build-docs@custom-action
+      - uses: 40ants/build-docs@v1
         with:
           asdf-system: cl-info
           # ngrok-auth-token: ${{ secrets.NGROK_AUTH_TOKEN }}
