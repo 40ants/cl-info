@@ -7,12 +7,12 @@ on:
     branches:
       - 'main'
       - 'master'
-  # # This will run tests for every pull request:
-  # pull_request:
-  # # Rerun tests at 10 AM every Monday
-  # # to check if they still work with latest dependencies.
-  # schedule:
-  #   - cron:  '0 10 * * 1'
+  # This will run tests for every pull request:
+  pull_request:
+  # Rerun tests at 10 AM every Monday
+  # to check if they still work with latest dependencies.
+  schedule:
+    - cron:  '0 10 * * 1'
 
 jobs:
   run-tests:
@@ -24,13 +24,13 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-#          - macos-latest
+          # - macos-latest
         quicklisp-dist:
           - quicklisp
-          - ultralisp
+          # - ultralisp
         lisp:
           - sbcl-bin
-        #   - ccl-bin
+          - ccl-bin
         #   - ecl
         #   - abcl
         #   - allegro
@@ -62,7 +62,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: 40ants/cl-info/.github/actions/setup-lisp@custom-action
+      - uses: 40ants/setup-lisp@v1
         with:
           asdf-system: cl-info
           qlfile-template: |
@@ -72,7 +72,7 @@ jobs:
 
             github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
             
-      - uses: 40ants/cl-info/.github/actions/run-tests@custom-action
+      - uses: 40ants/run-tests@v1
         with:
           asdf-system: cl-info
 
