@@ -1,4 +1,4 @@
-name: 'Check Installation'
+name: 'CI'
 
 on:
   # This will run tests on pushes
@@ -15,7 +15,10 @@ on:
     - cron:  '0 10 * * 1'
 
 jobs:
-  run_tests:
+  run-tests:
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.can-fail || false }}
+    
     strategy:
       fail-fast: false
       matrix:
@@ -52,10 +55,6 @@ jobs:
             os: macos-latest
             can-fail: true
           
-
-    runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.can-fail || false }}
-    
     env:
       LISP: ${{ matrix.lisp }}
       OS: ${{ matrix.os }}
@@ -63,48 +62,33 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Show ENV
-        run: |
-          env | sort -u
-      - name: Install Roswell
-        run: |
-          if [[ "$OS" == "ubuntu-latest" ]]; then
-              sudo apt-get -y install git build-essential automake libcurl4-openssl-dev
-          fi
-          if [[ "$OS" == "macos-latest" ]]; then
-              brew install automake autoconf curl
-          fi
-          
-          curl -L https://raw.githubusercontent.com/svetlyak40wt/roswell/patches/scripts/install-for-ci.sh | sh
-          
-          echo $HOME/.roswell/bin >> $GITHUB_PATH
-      - name: Upgrade ASDF to the Latest Version
-        run: |
-          ros install asdf
-      - name: Install Qlot
-        run: |
-          ros install qlot
-          echo .qlot/bin >> $GITHUB_PATH
-      - name: Install Dependencies
-        run: |
-          rm -fr qlfile
-          touch qlfile
+      - uses: 40ants/setup-lisp@v1
+        with:
+          asdf-system: cl-info
+          qlfile-template: |
+            {% ifequal quicklisp_dist "ultralisp" %}
+            dist ultralisp http://dist.ultralisp.org
+            {% endifequal %}
 
-          if [[ "${QUICKLISP_DIST}" == 'ultralisp' ]]; then
-              echo dist ultralisp http://dist.ultralisp.org/ >> qlfile
-          fi
+            github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
+            
+      - uses: 40ants/run-tests@v1
+        with:
+          asdf-system: cl-info
 
-          qlot install
-      - name: Install System
+      # This is additional step to check
+      # a command line script
+      - name: Run Command Line Version
         run: |
-          if [[ "${QUICKLISP_DIST}" == 'quicklisp' ]]; then
-              qlot exec ros install 40ants/defmain
-          fi
 
-          qlot exec ros install cl-info
-      - name: Run Tests
-        run: |
-          set -x
+          echo ::group::Help Argument
           qlot exec cl-info --help
+          echo ::endgroup::
+
+          echo ::group::Version Argument
           qlot exec cl-info --version
-          qlot exec cl-info cl-info
+          echo ::endgroup::
+
+          echo ::group::Lisp Systems Info
+          qlot exec cl-info cl-info defmain
+          echo ::endgroup::
