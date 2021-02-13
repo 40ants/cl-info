@@ -91,6 +91,7 @@ jobs:
       - uses: 40ants/run-tests@v2-beta
         with:
           asdf-system: cl-info
+          coveralls: true
 
       # This is additional step to check
       # a command line script
