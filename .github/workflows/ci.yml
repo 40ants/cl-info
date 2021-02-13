@@ -29,7 +29,7 @@ jobs:
           qlot exec ros install cxxxr/sblint
       - name: Run Linter
         run: |
-          qlot exec sblint cl-info.asd cl-info-test.asd cl-info-docs.asd
+          qlot exec sblint cl-info.asd cl-info-test.asd
 
   tests:
     runs-on: ${{ matrix.os }}
@@ -88,7 +88,7 @@ jobs:
 
             github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
             
-      - uses: 40ants/run-tests@v1
+      - uses: 40ants/run-tests@v2-beta
         with:
           asdf-system: cl-info
 
