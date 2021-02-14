@@ -91,7 +91,7 @@ jobs:
       - uses: 40ants/run-tests@v2-beta
         with:
           asdf-system: cl-info
-          coveralls: true
+          coveralls-token: 6Eaqh4itnxhNa1YGk9b2G0ZoK0bG9X5Qt
 
       # This is additional step to check
       # a command line script
