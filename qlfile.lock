@@ -5,4 +5,8 @@
 ("ultralisp" .
  (:class qlot/source/dist:source-dist
   :initargs (:distribution "http://dist.ultralisp.org" :%version :latest)
-  :version "20210206084500"))
+  :version "20210207102000"))
+("mgl-pax" .
+ (:class qlot/source/github:source-github
+  :initargs (:repos "svetlyak40wt/mgl-pax" :ref nil :branch "mgl-pax-minimal" :tag nil)
+  :version "github-dc8a4585d7b9fe7b4c83a4bc2f338eab"))

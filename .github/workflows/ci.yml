@@ -15,7 +15,23 @@ on:
     - cron:  '0 10 * * 1'
 
 jobs:
-  run-tests:
+  linter:
+    runs-on: ubuntu-latest
+    env:
+      LISP: sbcl-bin
+    steps:
+      - uses: actions/checkout@v1
+      - uses: 40ants/setup-lisp@v1
+        with:
+          asdf-system: cl-info
+      - name: Install SBLint
+        run: |
+          qlot exec ros install cxxxr/sblint
+      - name: Run Linter
+        run: |
+          qlot exec sblint cl-info.asd cl-info-test.asd
+
+  tests:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.can-fail || false }}
     
@@ -24,36 +40,36 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          # - macos-latest
         quicklisp-dist:
           - quicklisp
-          - ultralisp
-        lisp:
-          - sbcl-bin
-          - ccl-bin
-          - ecl
-          - abcl
-          - allegro
-          - clisp
-          - cmucl
-        include:
-          # Seems allegro is does not support 64bit OSX.
-          # Unable to install it using Roswell:
-          # alisp is not executable. Missing 32bit glibc?
-          - lisp: allegro
-            os: macos-latest
-            can-fail: true
-          # CLisp on Ubuntu can't be installed because of the error:
-          # #<FOREIGN-VARIABLE "rl_readline_state" #x00007FA93E698850> does not have
-          # the required size or alignment
-          - lisp: clisp
-            os: ubuntu-latest
-            can-fail: true
-          # CMUCL is 32bit and cant' work on 64bit OSX:
-          # .roswell/impls/x86-64/darwin/cmu-bin/21d/bin/lisp is not executable. Missing 32bit glibc?
-          - lisp: cmucl
-            os: macos-latest
-            can-fail: true
+          # - ultralisp
+        # lisp:
+        #   - sbcl-bin
+        #   - ccl-bin
+        #   - ecl
+        #   - abcl
+        #   - allegro
+        #   - clisp
+        #   - cmucl
+        # include:
+        #   # Seems allegro is does not support 64bit OSX.
+        #   # Unable to install it using Roswell:
+        #   # alisp is not executable. Missing 32bit glibc?
+        #   - lisp: allegro
+        #     os: macos-latest
+        #     can-fail: true
+        #   # CLisp on Ubuntu can't be installed because of the error:
+        #   # #<FOREIGN-VARIABLE "rl_readline_state" #x00007FA93E698850> does not have
+        #   # the required size or alignment
+        #   - lisp: clisp
+        #     os: ubuntu-latest
+        #     can-fail: true
+        #   # CMUCL is 32bit and cant' work on 64bit OSX:
+        #   # .roswell/impls/x86-64/darwin/cmu-bin/21d/bin/lisp is not executable. Missing 32bit glibc?
+        #   - lisp: cmucl
+        #     os: macos-latest
+        #     can-fail: true
           
     env:
       LISP: ${{ matrix.lisp }}
@@ -72,9 +88,10 @@ jobs:
 
             github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
             
-      - uses: 40ants/run-tests@v1
+      - uses: 40ants/run-tests@v2-beta
         with:
           asdf-system: cl-info
+          coveralls-token: ${{ secrets.github_token }}
 
       # This is additional step to check
       # a command line script
