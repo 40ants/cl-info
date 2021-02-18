@@ -20,7 +20,8 @@
                           (asdf:component-version system))))))
 
 
-(deftest test-lisp-implementation
+(deftest test-absent-system-info
   (testing "Checking if we can get system info and it will have the version from ASDF"
-    (ok (equal (lisp-implementation-type)
-               "SBCL"))))
+    (let ((info (cl-info:get-system-info :unknown-system)))
+      (ok (not (null info)))
+      (ok (cl-info:absent-p info)))))
