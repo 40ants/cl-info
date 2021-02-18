@@ -94,7 +94,7 @@ jobs:
       - uses: 40ants/run-tests@v2
         with:
           asdf-system: cl-info
-          coveralls-token: ${{ secrets.github_token }}
+          coveralls-token: ${{ matrix.lisp == 'sbcl-bin' && secrets.github_token }}
 
       # This is additional step to check
       # a command line script
