@@ -18,3 +18,9 @@
                (ok (not (null info)))
                (ok (equal (cl-info:get-version info)
                           (asdf:component-version system))))))
+
+
+(deftest test-lisp-implementation
+  (testing "Checking if we can get system info and it will have the version from ASDF"
+    (ok (not (string-equal (lisp-implementation-type)
+                           "sbcl")))))
