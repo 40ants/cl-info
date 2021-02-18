@@ -95,6 +95,10 @@ jobs:
         with:
           asdf-system: cl-info
           coveralls-token: ${{ matrix.lisp == 'sbcl-bin' && secrets.github_token }}
+        env:
+          FOO: BAR
+          BLAH: ${{ matrix.lisp == 'sbcl-bin' && matrix.quicklisp-dist }}
+          MINOR: ${{ matrix.lisp == 'ccl-bin' && matrix.missing-key }}
 
       # This is additional step to check
       # a command line script
