@@ -23,4 +23,4 @@
 (deftest test-lisp-implementation
   (testing "Checking if we can get system info and it will have the version from ASDF"
     (ok (equal (lisp-implementation-type)
-               "sbcl"))))
+               "SBCL"))))
