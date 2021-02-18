@@ -1,4 +1,4 @@
-(defpackage #:cl-info
+(uiop:define-package #:cl-info
    (:nicknames #:cl-info/core)
    (:use #:cl)
    (:import-from #:mgl-pax-minimal
@@ -6,7 +6,16 @@
                  #:reader)
    (:export #:cl-info
             #:get-cl-info
-            #:get-system-info))
+            #:get-system-info
+            #:get-software-version
+            #:get-software-type
+            #:get-lisp-version
+            #:get-lisp-type
+            #:get-asdf-version
+            #:get-version
+            #:get-name
+            #:absent-p
+            #:get-path))
 (in-package cl-info/core)
 
 
