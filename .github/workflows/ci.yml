@@ -42,8 +42,8 @@ jobs:
           - ubuntu-latest
 #          - macos-latest
         quicklisp-dist:
-          - quicklisp
-#          - ultralisp
+#          - quicklisp
+          - ultralisp
         lisp:
           - sbcl-bin
           - ccl-bin
@@ -94,11 +94,11 @@ jobs:
       - uses: 40ants/run-tests@fix-coveralls-for-not-supported-impls
         with:
           asdf-system: cl-info
-          coveralls-token: ${{ matrix.lisp == 'sbcl-bin' && secrets.github_token }}
-        env:
-          FOO: BAR
-          BLAH: ${{ matrix.lisp == 'sbcl-bin' && matrix.quicklisp-dist }}
-          MINOR: ${{ matrix.lisp == 'ccl-bin' && matrix.missing-key }}
+          coveralls-token: |
+            ${{ matrix.lisp == 'sbcl-bin' &&
+                matrix.os == 'ubuntu-latest' &&
+                matrix.quicklisp-dist == 'ultralisp' &&
+                secrets.github_token }}
 
       # This is additional step to check
       # a command line script
