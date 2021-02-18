@@ -91,7 +91,7 @@ jobs:
       - name: Check Roswell setup
         run: ros config
 
-      - uses: 40ants/run-tests@v2
+      - uses: 40ants/run-tests@fix-coveralls-for-not-supported-impls
         with:
           asdf-system: cl-info
           coveralls-token: ${{ matrix.lisp == 'sbcl-bin' && secrets.github_token }}
