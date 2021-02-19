@@ -33,7 +33,7 @@ jobs:
 
   tests:
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.can-fail || false }}
+#    continue-on-error: ${{ matrix.can-fail || false }}
     
     strategy:
       fail-fast: false
@@ -52,24 +52,36 @@ jobs:
           - allegro
           - clisp
           - cmucl
-        include:
+        exclude:
           # Seems allegro is does not support 64bit OSX.
           # Unable to install it using Roswell:
           # alisp is not executable. Missing 32bit glibc?
-          - lisp: allegro
-            os: macos-latest
-            can-fail: true
+          - os: macos-latest
+            lisp: allegro
+          # CLISP on OSX is built without support for threads,
+          # but Rove depends on bordeaux-threads and it fails to load
+          # https://github.com/roswell/roswell/issues/461
+          - os: macos-latest
+            lisp: clisp
+            quicklisp-dist: ultralisp
+          # CMUCL is 32bit and cant' work on 64bit OSX:
+          # .roswell/impls/x86-64/darwin/cmu-bin/21d/bin/lisp is not executable. Missing 32bit glibc?
+          - os: macos-latest
+            lisp: cmucl
           # CLisp on Ubuntu can't be installed because of the error:
           # #<FOREIGN-VARIABLE "rl_readline_state" #x00007FA93E698850> does not have
           # the required size or alignment
-          - lisp: clisp
-            os: ubuntu-latest
-            can-fail: true
-          # CMUCL is 32bit and cant' work on 64bit OSX:
-          # .roswell/impls/x86-64/darwin/cmu-bin/21d/bin/lisp is not executable. Missing 32bit glibc?
-          - lisp: cmucl
-            os: macos-latest
-            can-fail: true
+          - os: ubuntu-latest
+            lisp: clisp
+          # Disabled because Rove does not work on this configuration:
+          # https://github.com/fukamachi/rove/issues/47
+          - os: ubuntu-latest
+            lisp: allegro
+          # CMUCL on ubuntu is built without threading support
+          # but Rove depends on bordeaux-threads and it fails to load
+          # https://github.com/roswell/roswell/issues/461
+          - os: ubuntu-latest
+            lisp: cmucl
           
     env:
       LISP: ${{ matrix.lisp }}
@@ -87,11 +99,18 @@ jobs:
             {% endifequal %}
 
             github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
-            
+
+      - name: Check Roswell setup
+        run: ros config
+
       - uses: 40ants/run-tests@v2
         with:
           asdf-system: cl-info
-          coveralls-token: ${{ secrets.github_token }}
+          coveralls-token: |
+            ${{ matrix.lisp == 'sbcl-bin' &&
+                matrix.os == 'ubuntu-latest' &&
+                matrix.quicklisp-dist == 'ultralisp' &&
+                secrets.github_token }}
 
       # This is additional step to check
       # a command line script
