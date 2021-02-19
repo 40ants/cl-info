@@ -64,6 +64,12 @@ jobs:
           # the required size or alignment
           - lisp: clisp
             os: ubuntu-latest
+          # CLISP on OSX is built without support for threads,
+          # but Rove depends on bordeaux-threads and it fails to load
+          # https://github.com/roswell/roswell/issues/461
+          # - lisp: clisp
+          #   os: macos-latest
+          #   quicklisp-dist: ultralisp
           #  can-fail: true
           # CMUCL is 32bit and cant' work on 64bit OSX:
           # .roswell/impls/x86-64/darwin/cmu-bin/21d/bin/lisp is not executable. Missing 32bit glibc?
@@ -84,6 +90,9 @@ jobs:
           qlfile-template: |
             {% ifequal quicklisp_dist "ultralisp" %}
             dist ultralisp http://dist.ultralisp.org
+            # Unless this pull will be merged:
+            # https://github.com/sionescu/bordeaux-threads/pull/86
+            github bordeaux-threads svetlyak40wt/bordeaux-threads :branch fix-apiv2-for-no-threads
             {% endifequal %}
 
             github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
