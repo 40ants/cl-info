@@ -73,9 +73,13 @@ jobs:
           #  can-fail: true
           # CMUCL is 32bit and cant' work on 64bit OSX:
           # .roswell/impls/x86-64/darwin/cmu-bin/21d/bin/lisp is not executable. Missing 32bit glibc?
-          - lisp: cmucl
-            os: macos-latest
+          - os: macos-latest
+            lisp: cmucl
           #  can-fail: true
+          # Disabled because Rove does not work on this configuration:
+          # https://github.com/fukamachi/rove/issues/47
+          - os: ubuntu-latest
+            lisp: allegro
           
     env:
       LISP: ${{ matrix.lisp }}
