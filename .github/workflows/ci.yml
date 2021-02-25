@@ -129,6 +129,12 @@ jobs:
             github mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal
         if: steps.cache.outputs.cache-hit != 'true'
 
+      - name: Check Qlfile content
+        run: cat qlfile
+
+      - name: Check Qlfile.lock content
+        run: cat qlfile.lock
+
       - name: Check Roswell setup
         run: ros config
 
