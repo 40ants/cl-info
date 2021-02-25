@@ -104,7 +104,7 @@ jobs:
         id: cache
         uses: actions/cache@v2
         env:
-          cache-name: cache-roswell-v2
+          cache-name: cache-roswell-v3
         with:
           path: |
             $GITHUB_WORKSPACE/qlfile
