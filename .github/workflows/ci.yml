@@ -104,9 +104,11 @@ jobs:
         id: cache
         uses: actions/cache@v2
         env:
-          cache-name: cache-roswell-v1
+          cache-name: cache-roswell-v2
         with:
           path: |
+            $GITHUB_WORKSPACE/qlfile
+            $GITHUB_WORKSPACE/qlfile.lock
             /usr/local/bin/ros
             ~/.cache/common-lisp/
             ~/.roswell
