@@ -134,7 +134,7 @@ jobs:
       - name: Check Roswell setup
         run: ros config
 
-      - uses: 40ants/run-tests@v2.1.2
+      - uses: 40ants/run-tests@v2
         with:
           asdf-system: cl-info
           coveralls-token: |
