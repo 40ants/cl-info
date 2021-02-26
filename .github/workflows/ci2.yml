@@ -44,7 +44,7 @@
     "tests": {
       "runs-on": "${{ matrix.os }}",
       "strategy": {
-        "fail-fast": null,
+        "fail-fast": false,
         "matrix": {
           "os": [
             "ubuntu-latest",
