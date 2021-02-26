@@ -6,18 +6,18 @@
           "uses": "actions/checkout@v1"
         },
         {
-          "run": "sudo mkdir -p /usr/local/etc/roswell\\nsudo chown \"${USER}\" /usr/local/etc/roswell\\n# Here the ros binary will be restored:\\nsudo chown \"${USER}\" /usr/local/bin\\n",
+          "run": "sudo mkdir -p /usr/local/etc/roswell\nsudo chown \"${USER}\" /usr/local/etc/roswell\n# Here the ros binary will be restored:\nsudo chown \"${USER}\" /usr/local/bin\n",
           "name": "Grant All Perms to Make Cache Restoring Possible"
         },
         {
-          "run": "echo \"::set-output name=value::$(date -u \"+%Y-%m\")\"\\n",
+          "run": "echo \"::set-output name=value::$(date -u \"+%Y-%m\")\"\n",
           "id": "current-month",
           "name": "Get Current Month"
         },
         {
           "with": {
             "key": "${{ steps.current-month.outputs.value }}-${{ env.cache-name }}-${{ matrix.os }}-${{ matrix.quicklisp-dist }}-${{ matrix.lisp }}-${{ hashFiles('qlfile.lock') }}",
-            "path": "qlfile\\nqlfile.lock\\n/usr/local/bin/ros\\n~/.cache/common-lisp/\\n~/.roswell\\n/usr/local/etc/roswell\\n.qlot\\n"
+            "path": "qlfile\nqlfile.lock\n/usr/local/bin/ros\n~/.cache/common-lisp/\n~/.roswell\n/usr/local/etc/roswell\n.qlot\n"
           },
           "env": {
             "cache-name": "cache-roswell"
@@ -28,13 +28,13 @@
         },
         {
           "if": "steps.cache.outputs.cache-hit == 'true'",
-          "run": "echo $HOME/.roswell/bin >> $GITHUB_PATH\\necho .qlot/bin >> $GITHUB_PATH\\n",
+          "run": "echo $HOME/.roswell/bin >> $GITHUB_PATH\necho .qlot/bin >> $GITHUB_PATH\n",
           "name": "Restore Path To Cached Files"
         },
         {
           "if": "steps.cache.outputs.cache-hit != 'true'",
           "with": {
-            "qlfile-template": "{% ifequal quicklisp_dist \"ultralisp\" %}\\ndist ultralisp http://dist.ultralisp.org\\n{% endifequal %}\\n\\ngithub mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal\\n",
+            "qlfile-template": "{% ifequal quicklisp_dist \"ultralisp\" %}\ndist ultralisp http://dist.ultralisp.org\n{% endifequal %}\n\ngithub mgl-pax svetlyak40wt/mgl-pax :branch mgl-pax-minimal\n",
             "asdf-system": "cl-info"
           },
           "uses": "40ants/setup-lisp@v1"
@@ -45,13 +45,13 @@
         },
         {
           "with": {
-            "coveralls-token": "${{ matrix.lisp == 'sbcl-bin' &&\\n    matrix.os == 'ubuntu-latest' &&\\n    matrix.quicklisp-dist == 'ultralisp' &&\\n    secrets.github_token }}\\n",
+            "coveralls-token": "${{ matrix.lisp == 'sbcl-bin' &&\n    matrix.os == 'ubuntu-latest' &&\n    matrix.quicklisp-dist == 'ultralisp' &&\n    secrets.github_token }}\n",
             "asdf-system": "cl-info"
           },
           "uses": "40ants/run-tests@v2"
         },
         {
-          "run": "\\necho ::group::Help Argument\\nqlot exec cl-info --help\\necho ::endgroup::\\n\\necho ::group::Version Argument\\nqlot exec cl-info --version\\necho ::endgroup::\\n\\necho ::group::Lisp Systems Info\\nqlot exec cl-info cl-info defmain\\necho ::endgroup::\\n",
+          "run": "\necho ::group::Help Argument\nqlot exec cl-info --help\necho ::endgroup::\n\necho ::group::Version Argument\nqlot exec cl-info --version\necho ::endgroup::\n\necho ::group::Lisp Systems Info\nqlot exec cl-info cl-info defmain\necho ::endgroup::\n",
           "name": "Run Command Line Version"
         }
       ],
@@ -123,11 +123,11 @@
           "uses": "40ants/setup-lisp@v1"
         },
         {
-          "run": "qlot exec ros install cxxxr/sblint\\n",
+          "run": "qlot exec ros install cxxxr/sblint\n",
           "name": "Install SBLint"
         },
         {
-          "run": "qlot exec sblint cl-info.asd cl-info-test.asd\\n",
+          "run": "qlot exec sblint cl-info.asd cl-info-test.asd\n",
           "name": "Run Linter"
         }
       ],
