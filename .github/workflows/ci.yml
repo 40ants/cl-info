@@ -1,5 +1,5 @@
 {
-  "name": "CI",
+  "name": "Manual CI",
   "on": {
     "push": {
       "branches": ["workflow-generator"]
