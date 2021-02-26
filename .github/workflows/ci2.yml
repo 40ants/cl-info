@@ -143,6 +143,7 @@
         "cron": "0 10 * * 1"
       }
     ],
+    "pull_request": true,
     "push": {
       "branches": [
         "main",
