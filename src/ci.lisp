@@ -14,8 +14,7 @@
 
 
 (defworkflow docs
-  :on-push-to ("workflow-generator"
-               "master")
+  :on-push-to "master"
   :by-cron "0 10 * * 1"
   :cache t
   :jobs ((build-docs)))
@@ -40,8 +39,7 @@
 
 
 (defworkflow ci
-  :on-push-to ("workflow-generator"
-               "master")
+  :on-push-to "master"
   :by-cron "0 10 * * 1"
   :on-pull-request t
   :cache t
