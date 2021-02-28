@@ -110,7 +110,7 @@
             },
             {
               "os": "ubuntu-latest",
-              "lisp": "cmucl"
+              "lisp": "clisp"
             },
             {
               "os": "ubuntu-latest",

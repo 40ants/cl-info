@@ -73,7 +73,7 @@
                     ;; CLisp on Ubuntu can't be installed because of the error:
                     ;; #<FOREIGN-VARIABLE "rl_readline_state" #x00007FA93E698850> does not have
                     ;; the required size or alignment
-                    (:os "ubuntu-latest" :lisp "cmucl")
+                    (:os "ubuntu-latest" :lisp "clisp")
                     ;; Disabled because Rove does not work on this configuration:
                     ;; https://github.com/fukamachi/rove/issues/47
                     (:os "ubuntu-latest" :lisp "allegro")
