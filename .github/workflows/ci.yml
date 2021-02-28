@@ -81,7 +81,7 @@
             "ubuntu-latest",
             "macos-latest"
           ],
-          "quicklisp-dist": [
+          "quicklisp": [
             "quicklisp",
             "ultralisp"
           ],
@@ -126,7 +126,7 @@
       "runs-on": "${{ matrix.os }}",
       "env": {
         "OS": "${{ matrix.os }}",
-        "QUICKLISP_DIST": "${{ matrix.quicklisp-dist }}",
+        "QUICKLISP_DIST": "${{ matrix.quicklisp }}",
         "LISP": "${{ matrix.lisp }}"
       },
       "steps": [
@@ -151,7 +151,7 @@
           "uses": "actions/cache@v2",
           "with": {
             "path": "qlfile\n                           qlfile.lock\n                           /usr/local/bin/ros\n                           ~/.cache/common-lisp/\n                           ~/.roswell\n                           /usr/local/etc/roswell\n                           .qlot",
-            "key": "${{ steps.current-month.outputs.value }}-${{ env.cache-name }}-${{ matrix.os }}-${{ matrix.quicklisp-dist }}-${{ matrix.lisp }}-${{ hashFiles('qlfile.lock') }}"
+            "key": "${{ steps.current-month.outputs.value }}-${{ env.cache-name }}-${{ matrix.os }}-${{ matrix.quicklisp }}-${{ matrix.lisp }}-${{ hashFiles('qlfile.lock') }}"
           }
         },
         {
@@ -174,7 +174,7 @@
           "uses": "40ants/run-tests@v2",
           "with": {
             "asdf-system": "cl-info",
-            "coveralls-token": "\n${{ matrix.lisp == 'sbcl-bin' &&\n    matrix.os == 'ubuntu-latest' &&\n    matrix.quicklisp-dist == 'ultralisp' &&\n    secrets.github_token }}"
+            "coveralls-token": "\n${{ matrix.lisp == 'sbcl-bin' &&\n    matrix.os == 'ubuntu-latest' &&\n    matrix.quicklisp == 'ultralisp' &&\n    secrets.github_token }}"
           }
         },
         {
