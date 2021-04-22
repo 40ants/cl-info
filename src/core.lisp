@@ -18,7 +18,9 @@
 (in-package cl-info/core)
 
 
-(defsection @index (:title "CL-INFO - Common Lisp Environment Reporter")
+(defsection @index (:title "CL-INFO - Common Lisp Environment Reporter"
+                    :ignore-words ("CI"
+                                   "API"))
   "
 [![](https://github-actions.40ants.com/40ants/cl-info/matrix.svg)](https://github.com/40ants/cl-info/actions)
 
