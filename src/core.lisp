@@ -1,9 +1,8 @@
 (uiop:define-package #:cl-info
    (:nicknames #:cl-info/core)
    (:use #:cl)
-   (:import-from #:mgl-pax-minimal
-                 #:defsection
-                 #:reader)
+   (:import-from #:40ants-doc
+                 #:defsection)
    (:export #:cl-info
             #:get-cl-info
             #:get-system-info
