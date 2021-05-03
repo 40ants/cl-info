@@ -22,7 +22,7 @@
                     :ignore-words ("CI"
                                    "API"))
   "
-[![](https://github-actions.40ants.com/40ants/cl-info/matrix.svg)](https://github.com/40ants/cl-info/actions)
+[![](https://github-actions.40ants.com/40ants/cl-info/matrix.svg?only=ci.run-tests)](https://github.com/40ants/cl-info/actions)
 
 This is a small utility, useful to display information about you Common
 Lisp environment. You might want to call it in the CI pipeline or
