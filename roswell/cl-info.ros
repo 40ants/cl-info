@@ -19,7 +19,7 @@ exec ros -Q -- $0 "$@"
 (in-package :ros.script.cl-info)
 
 
-(defmain main ((version "Show program version and exit."
+(defmain (main) ((version "Show program version and exit."
                         :flag t)
                &rest system)
   "Show information about Lisp implementation and given systems. Useful when collecting information for bugreports."

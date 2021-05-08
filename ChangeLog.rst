@@ -2,6 +2,11 @@
  ChangeLog
 ===========
 
+0.4.1 (2021-05-08)
+==================
+
+Roswell script was fixed to work with latest DEFMAIN.
+
 0.4.0 (2019-07-19)
 ==================
 
