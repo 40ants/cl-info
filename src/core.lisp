@@ -2,7 +2,8 @@
    (:nicknames #:cl-info/core)
    (:use #:cl)
    (:import-from #:40ants-doc
-                 #:defsection)
+                 #:defsection
+                 #:defsection-copy)
    (:export #:cl-info
             #:get-cl-info
             #:get-system-info
@@ -14,13 +15,18 @@
             #:get-version
             #:get-name
             #:absent-p
-            #:get-path))
+            #:get-path
+            #:@index
+            #:system-info
+            #:@readme))
 (in-package cl-info/core)
 
 
 (defsection @index (:title "CL-INFO - Common Lisp Environment Reporter"
                     :ignore-words ("CI"
-                                   "API"))
+                                   "API"
+                                   "OS"
+                                   "ASDF"))
   "
 [![](https://github-actions.40ants.com/40ants/cl-info/matrix.svg?only=ci.run-tests)](https://github.com/40ants/cl-info/actions)
 
@@ -100,8 +106,20 @@ API Reference
   
   (cl-info class)
   (get-asdf-version (reader cl-info))
+  (get-lisp-type (reader cl-info))
+  (get-lisp-version (reader cl-info))
+  (get-software-type (reader cl-info))
+  (get-software-version (reader cl-info))
   
-  (system-info class))
+  (system-info class)
+  (absent-p (reader system-info))
+  (get-name (reader system-info))
+  (get-path (reader system-info))
+  (get-version (reader system-info)))
+
+
+;; We want readme contain the same information
+(defsection-copy @readme @index)
 
 
 (defclass cl-info ()

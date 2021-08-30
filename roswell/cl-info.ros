@@ -20,10 +20,12 @@ exec ros -Q -- $0 "$@"
 
 
 (defmain (main) ((version "Show program version and exit."
-                        :flag t)
-               &rest system)
+                          :flag t)
+                 ;; blah
+                 &rest system)
   "Show information about Lisp implementation and given systems. Useful when collecting information for bugreports."
 
+  ;; (format t "bsad ~A" blah)
   (when version
     (let* ((system (asdf:find-system :cl-info))
            (version (asdf:component-version system)))
