@@ -8,13 +8,15 @@ This is a small utility, useful to display information about you Common
 Lisp environment. You might want to call it in the `CI` pipeline or
 to use it when rendering a crash report in some client applications.
 
+<a id="usage-from-common-lisp"></a>
+
 ## Usage from Common Lisp
 
-It's main entry point is [`cl-info:get-cl-info`](b41e) function. It returns an object with
+It's main entry point is [`cl-info:get-cl-info`][b41e] function. It returns an object with
 customized `PRINT-OBJECT` method. You can use it to output debug
 information in your programs.
 
-[`cl-info`](45fe) collects inforrmation about `OS`, Lisp Implementation, `ASDF`, installed
+[`cl-info`][45fe] collects inforrmation about `OS`, Lisp Implementation, `ASDF`, installed
 Quicklisp distributions:
 
 ```text
@@ -36,7 +38,7 @@ QL:   ceramic github-e0d905187946f8f2358f7b05e1ce87b302e34312
       websocket-driver github-a3046b11dfb9803ac3bff7734dd017390c2b54bb
 CL-USER>
 ```
-Also, you can gather information about separate systems using [`cl-info:get-system-info`](a6b6)
+Also, you can gather information about separate systems using [`cl-info:get-system-info`][a6b6]
 function:
 
 ```text
@@ -44,9 +46,11 @@ CL-USER> (cl-info:get-system-info :hamcrest)
 System: HAMCREST 0.4.2
        /Users/art/common-lisp/cl-hamcrest/src/
 ```
+<a id="usage-from-command-line"></a>
+
 ## Usage From Command-line
 
-Also, you can use [`cl-info`](45fe) as a command-line utility. It is useful to
+Also, you can use [`cl-info`][45fe] as a command-line utility. It is useful to
 output information about common lisp environment running on `CI` server.
 
 Here is how to do it:
@@ -70,79 +74,81 @@ System: jonathan 0.1
         /Users/art/.roswell/lisp/quicklisp/dists/quicklisp/software/jonathan-20170630-git/
 System: some-other-system is not available
 ```
+<a id="api-reference"></a>
+
 ## API Reference
 
 <a id="x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29"></a>
 
-## [function](e859) `get-cl-info`
+## [function](0871) `get-cl-info`
 
 Returns information about lisp implementation, asdf and quicklisp.
 
 <a id="x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29"></a>
 
-## [function](490c) `get-system-info` system-name
+## [function](9d26) `get-system-info` system-name
 
 <a id="x-28CL-INFO-3ACL-INFO-20CLASS-29"></a>
 
-## [class](7832) `cl-info` ()
+## [class](87df) `cl-info` ()
 
 <a id="x-28CL-INFO-3AGET-ASDF-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](bd36) `get-asdf-version` (cl-info) (= (asdf/upgrade:asdf-version))
+## [reader](604f) `get-asdf-version` (cl-info) (= (asdf/upgrade:asdf-version))
 
 Returns `ASDF` version.
 
 <a id="x-28CL-INFO-3AGET-LISP-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](1869) `get-lisp-type` (cl-info) (= (lisp-implementation-type))
+## [reader](3140) `get-lisp-type` (cl-info) (= (lisp-implementation-type))
 
 <a id="x-28CL-INFO-3AGET-LISP-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](c943) `get-lisp-version` (cl-info) (= (lisp-implementation-version))
+## [reader](68cd) `get-lisp-version` (cl-info) (= (lisp-implementation-version))
 
 <a id="x-28CL-INFO-3AGET-SOFTWARE-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](67aa) `get-software-type` (cl-info) (= (software-type))
+## [reader](1410) `get-software-type` (cl-info) (= (software-type))
 
 <a id="x-28CL-INFO-3AGET-SOFTWARE-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](43f8) `get-software-version` (cl-info) (= (software-version))
+## [reader](ab66) `get-software-version` (cl-info) (= (software-version))
 
 <a id="x-28CL-INFO-3ASYSTEM-INFO-20CLASS-29"></a>
 
-## [class](ac94) `system-info` ()
+## [class](c471) `system-info` ()
 
 <a id="x-28CL-INFO-3AABSENT-P-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](949c) `absent-p` (system-info) (:absent = nil)
+## [reader](5a35) `absent-p` (system-info) (:absent = nil)
 
 <a id="x-28CL-INFO-3AGET-NAME-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](0157) `get-name` (system-info) (:name)
+## [reader](f8c2) `get-name` (system-info) (:name)
 
 <a id="x-28CL-INFO-3AGET-PATH-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](25dd) `get-path` (system-info) (:path)
+## [reader](af5f) `get-path` (system-info) (:path)
 
 <a id="x-28CL-INFO-3AGET-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](be1e) `get-version` (system-info) (:version)
+## [reader](3c96) `get-version` (system-info) (:version)
 
 
 [45fe]: #x-28CL-INFO-3ACL-INFO-20CLASS-29
 [b41e]: #x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29
 [a6b6]: #x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29
 [3904]: https://github.com/40ants/cl-info/actions
-[7832]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L125
-[bd36]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L126
-[1869]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L129
-[c943]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L131
-[67aa]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L133
-[43f8]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L135
-[ac94]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L147
-[0157]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L148
-[be1e]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L150
-[25dd]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L152
-[949c]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L154
-[e859]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L197
-[490c]: https://github.com/40ants/cl-info/blob/b55fba2ed7111b199abc0a9498ef3b7d50a70207/src/core.lisp#L202
+[87df]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L137
+[604f]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L138
+[3140]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L141
+[68cd]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L143
+[1410]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L145
+[ab66]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L147
+[c471]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L159
+[f8c2]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L160
+[3c96]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L162
+[af5f]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L164
+[5a35]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L166
+[0871]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L209
+[9d26]: https://github.com/40ants/cl-info/blob/eaa4a792e98b1c4c9b52444061eedf61869a6147/src/core.lisp#L214
