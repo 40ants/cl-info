@@ -4,6 +4,8 @@
    (:import-from #:40ants-doc
                  #:defsection
                  #:defsection-copy)
+   (:import-from #:docs-config
+                 #:docs-config)
    (:export #:cl-info
             #:get-cl-info
             #:get-system-info
@@ -120,6 +122,16 @@ API Reference
 
 ;; We want readme contain the same information
 (defsection-copy @readme @index)
+
+
+(defmethod docs-config ((system (eql (asdf:find-system "cl-info"))))
+  ;; 40ANTS-DOC-THEME-40ANTS system will bring
+  ;; as dependency a full 40ANTS-DOC but we don't want
+  ;; unnecessary dependencies here:
+  (ql:quickload :40ants-doc-theme-40ants)
+  (list :theme
+        (find-symbol "40ANTS-THEME"
+                     (find-package "40ANTS-DOC-THEME-40ANTS"))))
 
 
 (defclass cl-info ()
