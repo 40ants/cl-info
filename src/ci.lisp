@@ -42,10 +42,13 @@
   :on-push-to "master"
   :on-pull-request t
   :jobs ((run-tests
+          :name "test-on-sbcl"
           :lisp "sbcl-bin")
          (run-tests
+          :name "test-on-ccl"
           :lisp "ccl-bin")
          (run-tests
+          :name "test-on-allegro"
           :lisp "allegro")))
 
 

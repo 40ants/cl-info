@@ -9,7 +9,7 @@
     "pull_request": null
   },
   "jobs": {
-    "run-tests": {
+    "test-on-sbcl": {
       "runs-on": "ubuntu-latest",
       "env": {
         "OS": "ubuntu-latest",
@@ -42,7 +42,7 @@
         }
       ]
     },
-    "run-tests-2": {
+    "test-on-ccl": {
       "runs-on": "ubuntu-latest",
       "env": {
         "OS": "ubuntu-latest",
@@ -75,7 +75,7 @@
         }
       ]
     },
-    "run-tests-3": {
+    "test-on-allegro": {
       "runs-on": "ubuntu-latest",
       "env": {
         "OS": "ubuntu-latest",
