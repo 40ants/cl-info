@@ -37,7 +37,7 @@
         }
       ]
     },
-    "run-tests": {
+    "run-tests-2": {
       "runs-on": "ubuntu-latest",
       "env": {
         "OS": "ubuntu-latest",
@@ -70,7 +70,7 @@
         }
       ]
     },
-    "run-tests": {
+    "run-tests-3": {
       "runs-on": "ubuntu-latest",
       "env": {
         "OS": "ubuntu-latest",
