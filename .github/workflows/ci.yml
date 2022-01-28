@@ -1,20 +1,10 @@
 {
   "name": "CI",
   "on": {
-    "push": {
-      "branches": [
-        "master"
-      ]
-    },
-    "pull_request": null,
-    "schedule": [
-      {
-        "cron": "0 10 * * 1"
-      }
-    ]
+    "pull_request": null
   },
   "jobs": {
-    "linter": {
+    "run-tests": {
       "runs-on": "ubuntu-latest",
       "env": {
         "OS": "ubuntu-latest",
@@ -27,116 +17,32 @@
           "uses": "actions/checkout@v1"
         },
         {
-          "name": "Grant All Perms to Make Cache Restoring Possible",
-          "run": "sudo mkdir -p /usr/local/etc/roswell\n                 sudo chown \"${USER}\" /usr/local/etc/roswell\n                 # Here the ros binary will be restored:\n                 sudo chown \"${USER}\" /usr/local/bin",
-          "shell": "bash"
-        },
-        {
-          "name": "Get Current Month",
-          "id": "current-month",
-          "run": "echo \"::set-output name=value::$(date -u \"+%Y-%m\")\"",
-          "shell": "bash"
-        },
-        {
-          "name": "Cache Roswell Setup",
-          "id": "cache",
-          "uses": "actions/cache@v2",
-          "with": {
-            "path": "qlfile\n                           qlfile.lock\n                           /usr/local/bin/ros\n                           ~/.cache/common-lisp/\n                           ~/.roswell\n                           /usr/local/etc/roswell\n                           .qlot",
-            "key": "${{ steps.current-month.outputs.value }}-${{ env.cache-name }}-ubuntu-latest-quicklisp-sbcl-bin-${{ hashFiles('qlfile.lock', '*.asd') }}"
-          }
-        },
-        {
-          "name": "Restore Path To Cached Files",
-          "run": "echo $HOME/.roswell/bin >> $GITHUB_PATH\n                 echo .qlot/bin >> $GITHUB_PATH",
-          "shell": "bash",
-          "if": "steps.cache.outputs.cache-hit == 'true'"
-        },
-        {
           "name": "Setup Common Lisp Environment",
           "uses": "40ants/setup-lisp@v2",
           "with": {
             "asdf-system": "cl-info"
-          },
-          "if": "steps.cache.outputs.cache-hit != 'true'"
+          }
         },
         {
-          "name": "Change dist to Ultralisp",
-          "run": "echo 'dist ultralisp http://dist.ultralisp.org' > qlfile",
-          "shell": "bash"
+          "name": "Run Tests",
+          "uses": "40ants/run-tests@v2",
+          "with": {
+            "asdf-system": "cl-info"
+          }
         },
         {
-          "name": "Update Qlot",
-          "run": "qlot update || qlot update",
-          "shell": "bash"
-        },
-        {
-          "name": "Install SBLint wrapper",
-          "run": "qlot exec ros install 40ants-linter",
-          "shell": "bash"
-        },
-        {
-          "name": "Run Linter",
-          "run": "qlot exec 40ants-linter --system \"cl-info\"",
+          "name": "Run Command Line Version",
+          "run": "echo ::group::Help Argument\nqlot exec cl-info --help\necho ::endgroup::\necho ::group::Version Argument\nqlot exec cl-info --version\necho ::endgroup::\necho ::group::Lisp Systems Info\nqlot exec cl-info cl-info defmain\necho ::endgroup::\n",
           "shell": "bash"
         }
       ]
     },
     "run-tests": {
-      "strategy": {
-        "fail-fast": false,
-        "matrix": {
-          "os": [
-            "ubuntu-latest",
-            "macos-latest"
-          ],
-          "quicklisp": [
-            "quicklisp",
-            "ultralisp"
-          ],
-          "lisp": [
-            "sbcl-bin",
-            "ccl-bin",
-            "allegro",
-            "ecl",
-            "allegro",
-            "clisp",
-            "cmucl"
-          ],
-          "exclude": [
-            {
-              "os": "macos-latest",
-              "lisp": "allegro"
-            },
-            {
-              "os": "macos-latest",
-              "quicklisp": "ultralisp",
-              "lisp": "clisp"
-            },
-            {
-              "os": "macos-latest",
-              "lisp": "cmucl"
-            },
-            {
-              "os": "ubuntu-latest",
-              "lisp": "clisp"
-            },
-            {
-              "os": "ubuntu-latest",
-              "lisp": "allegro"
-            },
-            {
-              "os": "ubuntu-latest",
-              "lisp": "cmucl"
-            }
-          ]
-        }
-      },
-      "runs-on": "${{ matrix.os }}",
+      "runs-on": "ubuntu-latest",
       "env": {
-        "OS": "${{ matrix.os }}",
-        "QUICKLISP_DIST": "${{ matrix.quicklisp }}",
-        "LISP": "${{ matrix.lisp }}"
+        "OS": "ubuntu-latest",
+        "QUICKLISP_DIST": "quicklisp",
+        "LISP": "ccl-bin"
       },
       "steps": [
         {
@@ -144,46 +50,50 @@
           "uses": "actions/checkout@v1"
         },
         {
-          "name": "Grant All Perms to Make Cache Restoring Possible",
-          "run": "sudo mkdir -p /usr/local/etc/roswell\n                 sudo chown \"${USER}\" /usr/local/etc/roswell\n                 # Here the ros binary will be restored:\n                 sudo chown \"${USER}\" /usr/local/bin",
-          "shell": "bash"
-        },
-        {
-          "name": "Get Current Month",
-          "id": "current-month",
-          "run": "echo \"::set-output name=value::$(date -u \"+%Y-%m\")\"",
-          "shell": "bash"
-        },
-        {
-          "name": "Cache Roswell Setup",
-          "id": "cache",
-          "uses": "actions/cache@v2",
-          "with": {
-            "path": "qlfile\n                           qlfile.lock\n                           /usr/local/bin/ros\n                           ~/.cache/common-lisp/\n                           ~/.roswell\n                           /usr/local/etc/roswell\n                           .qlot",
-            "key": "${{ steps.current-month.outputs.value }}-${{ env.cache-name }}-${{ matrix.os }}-${{ matrix.quicklisp }}-${{ matrix.lisp }}-${{ hashFiles('qlfile.lock', '*.asd') }}"
-          }
-        },
-        {
-          "name": "Restore Path To Cached Files",
-          "run": "echo $HOME/.roswell/bin >> $GITHUB_PATH\n                 echo .qlot/bin >> $GITHUB_PATH",
-          "shell": "bash",
-          "if": "steps.cache.outputs.cache-hit == 'true'"
-        },
-        {
           "name": "Setup Common Lisp Environment",
           "uses": "40ants/setup-lisp@v2",
           "with": {
-            "asdf-system": "cl-info",
-            "qlfile-template": "{% ifequal quicklisp_dist \"ultralisp\" %}\ndist ultralisp http://dist.ultralisp.org\n{% endifequal %}"
-          },
-          "if": "steps.cache.outputs.cache-hit != 'true'"
+            "asdf-system": "cl-info"
+          }
         },
         {
           "name": "Run Tests",
           "uses": "40ants/run-tests@v2",
           "with": {
-            "asdf-system": "cl-info",
-            "coveralls-token": "\n${{ matrix.lisp == 'sbcl-bin' &&\n    matrix.os == 'ubuntu-latest' &&\n    matrix.quicklisp == 'ultralisp' &&\n    secrets.github_token }}"
+            "asdf-system": "cl-info"
+          }
+        },
+        {
+          "name": "Run Command Line Version",
+          "run": "echo ::group::Help Argument\nqlot exec cl-info --help\necho ::endgroup::\necho ::group::Version Argument\nqlot exec cl-info --version\necho ::endgroup::\necho ::group::Lisp Systems Info\nqlot exec cl-info cl-info defmain\necho ::endgroup::\n",
+          "shell": "bash"
+        }
+      ]
+    },
+    "run-tests": {
+      "runs-on": "ubuntu-latest",
+      "env": {
+        "OS": "ubuntu-latest",
+        "QUICKLISP_DIST": "quicklisp",
+        "LISP": "allegro"
+      },
+      "steps": [
+        {
+          "name": "Checkout Code",
+          "uses": "actions/checkout@v1"
+        },
+        {
+          "name": "Setup Common Lisp Environment",
+          "uses": "40ants/setup-lisp@v2",
+          "with": {
+            "asdf-system": "cl-info"
+          }
+        },
+        {
+          "name": "Run Tests",
+          "uses": "40ants/run-tests@v2",
+          "with": {
+            "asdf-system": "cl-info"
           }
         },
         {
