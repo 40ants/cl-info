@@ -39,6 +39,7 @@
 
 
 (defworkflow ci
+  :on-push-to "master"
   :on-pull-request t
   :jobs ((run-tests
           :lisp "sbcl-bin")
