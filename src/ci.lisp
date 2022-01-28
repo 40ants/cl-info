@@ -49,24 +49,6 @@
 
 
 (defworkflow ci
-  :on-pull-request t
-  :jobs ((run-tests
-          :os ("ubuntu-latest"
-               "macos-latest")
-          :quicklisp ("quicklisp"
-                      "ultralisp")
-          :lisp ("sbcl-bin"
-                 "ccl-bin"
-                 "allegro"
-                 "clisp"
-                 "cmucl")
-          :exclude (;; Seems allegro is does not support 64bit OSX.
-                    ;; Unable to install it using Roswell:
-                    ;; alisp is not executable. Missing 32bit glibc?
-                    (:os "macos-latest" :lisp "allegro")))))
-
-
-(defworkflow ci
   :on-push-to "master"
   :by-cron "0 10 * * 1"
   :on-pull-request t
