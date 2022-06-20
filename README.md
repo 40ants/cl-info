@@ -80,78 +80,78 @@ System: some-other-system is not available
 
 <a id="x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29"></a>
 
-## [function](a26f) `cl-info:get-cl-info`
+## [function](d7c9) `cl-info:get-cl-info`
 
 Returns information about lisp implementation, asdf and quicklisp.
 
 <a id="x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29"></a>
 
-## [function](60ab) `cl-info:get-system-info` system-name
+## [function](dac0) `cl-info:get-system-info` system-name
 
 <a id="x-28CL-INFO-3ACL-INFO-20CLASS-29"></a>
 
-## [class](7a5a) `cl-info:cl-info` ()
+## [class](087e) `cl-info:cl-info` ()
 
 <a id="x-28CL-INFO-3AGET-ASDF-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](4f8f) `cl-info:get-asdf-version` (cl-info) (= (asdf/upgrade:asdf-version))
+## [reader](642d) `cl-info:get-asdf-version` (cl-info) (= (asdf/upgrade:asdf-version))
 
 Returns `ASDF` version.
 
 <a id="x-28CL-INFO-3AGET-LISP-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](3a8c) `cl-info:get-lisp-type` (cl-info) (= (lisp-implementation-type))
+## [reader](2305) `cl-info:get-lisp-type` (cl-info) (= (lisp-implementation-type))
 
 <a id="x-28CL-INFO-3AGET-LISP-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](bdc6) `cl-info:get-lisp-version` (cl-info) (= (lisp-implementation-version))
+## [reader](1c66) `cl-info:get-lisp-version` (cl-info) (= (lisp-implementation-version))
 
 <a id="x-28CL-INFO-3AGET-SOFTWARE-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](8bae) `cl-info:get-software-type` (cl-info) (= (software-type))
+## [reader](a905) `cl-info:get-software-type` (cl-info) (= (software-type))
 
 <a id="x-28CL-INFO-3AGET-SOFTWARE-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29"></a>
 
-## [reader](5560) `cl-info:get-software-version` (cl-info) (= (software-version))
+## [reader](4ef0) `cl-info:get-software-version` (cl-info) (= (software-version))
 
 <a id="x-28CL-INFO-3ASYSTEM-INFO-20CLASS-29"></a>
 
-## [class](5636) `cl-info:system-info` ()
+## [class](cd5a) `cl-info:system-info` ()
 
 <a id="x-28CL-INFO-3AABSENT-P-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](53b7) `cl-info:absent-p` (system-info) (:absent = nil)
+## [reader](4c52) `cl-info:absent-p` (system-info) (:absent = nil)
 
 <a id="x-28CL-INFO-3AGET-NAME-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](9e71) `cl-info:get-name` (system-info) (:name)
+## [reader](3027) `cl-info:get-name` (system-info) (:name)
 
 <a id="x-28CL-INFO-3AGET-PATH-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](95e6) `cl-info:get-path` (system-info) (:path)
+## [reader](d90c) `cl-info:get-path` (system-info) (:path)
 
 <a id="x-28CL-INFO-3AGET-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29"></a>
 
-## [reader](50b8) `cl-info:get-version` (system-info) (:version)
+## [reader](fb86) `cl-info:get-version` (system-info) (:version)
 
 
 [3d51]: https://40ants.com/cl-info/#x-28CL-INFO-3ACL-INFO-20CLASS-29
 [5b06]: https://40ants.com/cl-info/#x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29
 [9306]: https://40ants.com/cl-info/#x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29
 [3904]: https://github.com/40ants/cl-info/actions
-[7a5a]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L137
-[4f8f]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L138
-[3a8c]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L141
-[bdc6]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L143
-[8bae]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L145
-[5560]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L147
-[5636]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L159
-[9e71]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L160
-[50b8]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L162
-[95e6]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L164
-[53b7]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L166
-[a26f]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L209
-[60ab]: https://github.com/40ants/cl-info/blob/0c776f9ec3c534098cf3443fb5dd13874eca005c/src/core.lisp#L214
+[087e]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L137
+[642d]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L138
+[2305]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L141
+[1c66]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L143
+[a905]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L145
+[4ef0]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L147
+[cd5a]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L159
+[3027]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L160
+[fb86]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L162
+[d90c]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L164
+[4c52]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L166
+[d7c9]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L209
+[dac0]: https://github.com/40ants/cl-info/blob/9d06b7e426bf1910a33a1801d3afcd14f685a815/src/core.lisp#L214
 
 * * *
 ###### [generated by [40ANTS-DOC](https://40ants.com/doc/)]
