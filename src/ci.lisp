@@ -40,20 +40,6 @@
 
 (defworkflow ci
   :on-push-to "master"
-  :on-pull-request t
-  :jobs ((run-tests
-          :name "test-on-sbcl"
-          :lisp "sbcl-bin")
-         (run-tests
-          :name "test-on-ccl"
-          :lisp "ccl-bin")
-         (run-tests
-          :name "test-on-allegro"
-          :lisp "allegro")))
-
-
-(defworkflow ci
-  :on-push-to "master"
   :by-cron "0 10 * * 1"
   :on-pull-request t
   :cache t
@@ -92,7 +78,9 @@
                     ;; CMUCL on ubuntu is built without threading support
                     ;; but Rove depends on bordeaux-threads and it fails to load
                     ;; https://github.com/roswell/roswell/issues/461
-                    (:os "ubuntu-latest" :lisp "cmucl"))
+                    (:os "ubuntu-latest" :lisp "cmucl")
+                    ;; CCL is not supported on OSX with arch64 architecture:
+                    (:os "macos-latest"  :lisp "ccl-bin"))
           
           :coverage t
           :qlfile "{% ifequal quicklisp_dist \"ultralisp\" %}

@@ -89,6 +89,10 @@
             {
               "os": "ubuntu-latest",
               "lisp": "cmucl"
+            },
+            {
+              "os": "macos-latest",
+              "lisp": "ccl-bin"
             }
           ],
           "quicklisp": [
