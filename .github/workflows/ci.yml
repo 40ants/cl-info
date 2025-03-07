@@ -14,48 +14,6 @@
     ]
   },
   "jobs": {
-    "linter": {
-      "runs-on": "ubuntu-latest",
-      "env": {
-        "OS": "ubuntu-latest",
-        "QUICKLISP_DIST": "quicklisp",
-        "LISP": "sbcl-bin"
-      },
-      "steps": [
-        {
-          "name": "Checkout Code",
-          "uses": "actions/checkout@v4"
-        },
-        {
-          "name": "Setup Common Lisp Environment",
-          "uses": "40ants/setup-lisp@v4",
-          "with": {
-            "asdf-system": "cl-info",
-            "cache": "true"
-          }
-        },
-        {
-          "name": "Change dist to Ultralisp if qlfile does not exist",
-          "run": "if [[ ! -e qlfile ]]; then echo 'dist ultralisp http://dist.ultralisp.org' > qlfile; fi",
-          "shell": "bash"
-        },
-        {
-          "name": "Update Qlot",
-          "run": "qlot update --no-deps",
-          "shell": "bash"
-        },
-        {
-          "name": "Install SBLint wrapper",
-          "run": "qlot exec ros install 40ants-asdf-system 40ants-linter",
-          "shell": "bash"
-        },
-        {
-          "name": "Run Linter",
-          "run": "qlot exec 40ants-linter --system \"cl-info\"",
-          "shell": "bash"
-        }
-      ]
-    },
     "run-tests": {
       "strategy": {
         "fail-fast": false,
@@ -125,7 +83,7 @@
           "name": "Setup Common Lisp Environment",
           "uses": "40ants/setup-lisp@v4",
           "with": {
-            "asdf-system": "cl-info",
+            "asdf-system": "cl-info-ci",
             "qlfile-template": "{% ifequal quicklisp_dist \"ultralisp\" %}\ndist ultralisp http://dist.ultralisp.org\n{% endifequal %}",
             "cache": "true"
           }
@@ -134,7 +92,7 @@
           "name": "Run Tests",
           "uses": "40ants/run-tests@v2",
           "with": {
-            "asdf-system": "cl-info",
+            "asdf-system": "cl-info-ci",
             "coveralls-token": "\n${{ matrix.lisp == 'sbcl-bin' &&\n    matrix.os == 'ubuntu-latest' &&\n    matrix.quicklisp == 'ultralisp' &&\n    secrets.github_token }}"
           }
         },

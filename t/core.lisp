@@ -1,14 +1,11 @@
-(uiop:define-package #:cl-info-test/core
+(uiop:define-package #:cl-info-tests/core
   (:use #:cl)
   (:import-from #:cl-info)
-  (:import-from #:hamcrest/rove
-                #:contains
-                #:assert-that)
   (:import-from #:rove
                 #:testing
                 #:ok
                 #:deftest))
-(in-package cl-info-test/core)
+(in-package #:cl-info-tests/core)
 
 
 (deftest test-system-info
