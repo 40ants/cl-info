@@ -8,6 +8,7 @@
 (defchangelog (:ignore-words ("SLY"
                               "ASDF"
                               "REPL"
+                              "CI"
                               "DEFMAIN"
                               "README"
                               "ASDF/PLAN:SYSTEM-OUT-OF-DATE"

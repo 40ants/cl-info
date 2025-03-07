@@ -51,7 +51,7 @@
         },
         {
           "name": "Run Linter",
-          "run": "qlot exec 40ants-linter --system \"cl-info, cl-info-docs, cl-info-tests\" --imports",
+          "run": "qlot exec 40ants-linter --system \"cl-info, cl-info-docs, cl-info-tests\"",
           "shell": "bash"
         }
       ]

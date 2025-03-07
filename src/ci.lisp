@@ -20,7 +20,10 @@
           :asdf-systems ("cl-info"
                          "cl-info-docs"
                          "cl-info-tests")
-          :check-imports t)))
+          ;; Imports checking is disabled until somebody will implement
+          ;; ignoring usages of ql-dist package in src/core.lisp
+          ;; :check-imports t
+          )))
 
 
 (defworkflow docs
