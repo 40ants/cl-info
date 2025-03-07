@@ -1,7 +1,5 @@
-(defpackage #:cl-info/ci
+(defpackage #:cl-info-ci/ci
   (:use #:cl)
-  (:import-from #:40ants-ci/jobs/linter
-                #:linter)
   (:import-from #:40ants-ci/jobs/run-tests)
   (:import-from #:40ants-ci/jobs/docs
                 #:build-docs)
@@ -10,8 +8,19 @@
                 #:sections)
   (:import-from #:40ants-ci/workflow
                 #:defworkflow))
-(in-package cl-info/ci)
+(in-package #:cl-info-ci/ci)
 
+
+(defworkflow linter
+  :on-push-to "master"
+  :by-cron "0 10 * * 1"
+  :on-pull-request t
+  :cache t
+  :jobs ((40ants-ci/jobs/linter:linter
+          :asdf-systems ("cl-info"
+                         "cl-info-docs"
+                         "cl-info-tests")
+          :check-imports t)))
 
 (defworkflow docs
   :on-push-to "master"
@@ -43,8 +52,7 @@
   :by-cron "0 10 * * 1"
   :on-pull-request t
   :cache t
-  :jobs ((linter)
-         (run-tests
+  :jobs ((run-tests
           :os ("ubuntu-latest"
                "macos-latest")
           :quicklisp ("quicklisp"
