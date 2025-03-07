@@ -12,6 +12,8 @@
                               "README"
                               "ASDF/PLAN:SYSTEM-OUT-OF-DATE"
                               "HTTP"))
+  (0.5.0 2025-03-07
+         "New systems for CI and docs. Also, documentation section were moved from the core system to not bring unnecessary dependencies.")
   (0.4.1 2021-05-08
          "Roswell script was fixed to work with latest DEFMAIN.")
   (0.4.0 2019-07-19
