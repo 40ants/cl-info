@@ -22,11 +22,13 @@
                          "cl-info-tests")
           :check-imports t)))
 
+
 (defworkflow docs
   :on-push-to "master"
   :by-cron "0 10 * * 1"
+  :on-pull-request t
   :cache t
-  :jobs ((build-docs)))
+  :jobs ((build-docs :asdf-system "cl-info-docs")))
 
 
 (defclass run-tests (40ants-ci/jobs/run-tests:run-tests)

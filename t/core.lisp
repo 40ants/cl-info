@@ -1,9 +1,6 @@
 (uiop:define-package #:cl-info-tests/core
   (:use #:cl)
   (:import-from #:cl-info)
-  (:import-from #:hamcrest/rove
-                #:contains
-                #:assert-that)
   (:import-from #:rove
                 #:testing
                 #:ok

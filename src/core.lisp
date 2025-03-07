@@ -1,11 +1,6 @@
 (uiop:define-package #:cl-info
    (:nicknames #:cl-info/core)
    (:use #:cl)
-   (:import-from #:40ants-doc
-                 #:defsection
-                 #:defsection-copy)
-   (:import-from #:docs-config
-                 #:docs-config)
    (:export #:cl-info
             #:get-cl-info
             #:get-system-info
@@ -21,16 +16,6 @@
             #:system-info
             #:get-ql-dists))
 (in-package cl-info/core)
-
-
-(defmethod docs-config ((system (eql (asdf:find-system "cl-info"))))
-  ;; 40ANTS-DOC-THEME-40ANTS system will bring
-  ;; as dependency a full 40ANTS-DOC but we don't want
-  ;; unnecessary dependencies here:
-  (uiop:symbol-call :ql :quickload :40ants-doc-theme-40ants)
-  (list :theme
-        (find-symbol "40ANTS-THEME"
-                     (find-package "40ANTS-DOC-THEME-40ANTS"))))
 
 
 (defclass cl-info ()
