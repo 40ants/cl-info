@@ -2,6 +2,12 @@
 
 # ChangeLog
 
+<a id="x-28CL-INFO-DOCS-2FCHANGELOG-3A-3A-7C0-2E5-2E0-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29"></a>
+
+## 0.5.0 (2025-03-07)
+
+New systems for `CI` and docs. Also, documentation section were moved from the core system to not bring unnecessary dependencies.
+
 <a id="x-28CL-INFO-DOCS-2FCHANGELOG-3A-3A-7C0-2E4-2E1-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29"></a>
 
 ## 0.4.1 (2021-05-08)
