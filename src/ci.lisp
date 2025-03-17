@@ -76,7 +76,9 @@
                     ;; CLISP on OSX is built without support for threads,
                     ;; but Rove depends on bordeaux-threads and it fails to load
                     ;; https://github.com/roswell/roswell/issues/461
-                    (:os "macos-latest" :quicklisp "ultralisp" :lisp "clisp")
+                    ;; Also see this issue declined by bordeaux-threads's maintainer:
+                    ;; https://github.com/sionescu/bordeaux-threads/pull/86
+                    (:os "macos-latest" :lisp "clisp")
                     ;; CMUCL is 32bit and cant' work on 64bit OSX:
                     ;; .roswell/impls/x86-64/darwin/cmu-bin/21d/bin/lisp
                     ;; is not executable. Missing 32bit glibc?
