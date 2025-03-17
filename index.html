@@ -1,0 +1,158 @@
+<html lang=en>
+ <head>
+  <meta charset=UTF-8><meta name=viewport
+      content="width=device-width, initial-scale=1">
+  <title>CL-INFO - Common Lisp Environment Reporter</title>
+  <link rel=alternate
+        href="https://40ants.com/cl-info/changelog.xml"
+        type="application/rss+xml">
+  <link rel=stylesheet type="text/css"
+        href=theme.css>
+  <script type="text/javascript" src=jquery.js></script>
+  <script type="text/javascript" src=toc.js></script>
+  <script type="text/javascript">$(document).ready(function() {$('a:has(img)').css('border-bottom', 'none')})</script>
+  <link rel=stylesheet type="text/css"
+      href=highlight.min.css>
+  <script type="text/javascript"
+          src=highlight.min.js></script>
+  <script type="text/javascript">hljs.highlightAll();</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FL71WXK73K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FL71WXK73K');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(42462884, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/42462884" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+ </head>
+ <body>
+  <div class=page><a id=fork-me href="https://github.com/40ants/cl-info">Fork me on GitHub</a>
+   <div class=navbar>
+    <div class=navbar-inner>
+     <a class=brand href="/">
+      <img class=logo
+           src="https://40ants.com/img/logo.svg"></a>
+     <ul class=nav>
+      <li><a href="/posts/">Blog</a>
+      <li><a href="/ru/posts/">Blog (RU)</a>
+      <li><a href="/tips/">Lisp Tips</a>
+      <li><a href="/projects/">Our Projects</a>
+      <li><a href="/about/">About</a>
+     </ul>
+    </div>
+   </div>
+   <input type=checkbox id=sidebar-check>
+   <label for=sidebar-check>
+    <div id=sidebar-trigger>
+     <span></span><span></span><span></span>
+    </div></label><div class=sidebar><div class=header><form class=search method=GET action="search/">
+      <input type=text name=q>
+      <input type=submit value=Search><span id=search-progress></span>
+     </form>
+    </div><div class=content><div class=page-toc><ul><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">CL-INFO - Common Lisp Environment Reporter</a></p><ul><li><p><a href="#cl-info-asdf-system-details" data-document="" data-node="cl-info-asdf-system-details">CL-INFO ASDF System Details</a></p></li><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40INSTALLATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-40INSTALLATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">Installation</a></p></li><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40USAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-40USAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">Usage</a></p><ul><li><p><a href="#usage-from-common-lisp" data-document="" data-node="usage-from-common-lisp">Usage from Common Lisp</a></p></li><li><p><a href="#usage-from-command-line" data-document="" data-node="usage-from-command-line">Usage From Command-line</a></p></li></ul></li><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40API-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-40API-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">API</a></p><ul><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-3FPACKAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-3FPACKAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">CL-INFO</a></p><ul><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FClasses-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FClasses-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">Classes</a></p><ul><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24CL-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24CL-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">CL-INFO</a></p></li><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24SYSTEM-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24SYSTEM-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">SYSTEM-INFO</a></p></li></ul></li><li><p><a href="#x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FFunctions-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="" data-node="x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FFunctions-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">Functions</a></p></li></ul></li></ul></li></ul></li><li><p><a href="changelog/#x-28CL-INFO-DOCS-2FCHANGELOG-3A-40CHANGELOG-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29" data-document="changelog/" data-node="x-28CL-INFO-DOCS-2FCHANGELOG-3A-40CHANGELOG-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29">ChangeLog</a></p></li></ul>
+     </div>
+    </div><div class=footer>
+     <a href="https://40ants.com/doc">[generated by 40ANTS-DOC]</a>
+    </div>
+   </div><div class=content role=main><h1>CL-INFO - Common Lisp Environment Reporter<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-40INDEX-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h1><h2 id="cl-info-asdf-system-details">CL-INFO ASDF System Details</h2><ul><li><p>Description: A helper to an answer a question about <code>OS</code>, Lisp and Everything.</p></li><li><p>Licence: Unlicense</p></li><li><p>Author: Alexander Artemenko &lt;svetlyak.40wt@gmail.com&gt;</p></li><li><p>Homepage: <a href="https://40ants.com/cl-info">https://40ants.com/cl-info</a></p></li><li><p>Bug tracker: <a href="https://github.com/40ants/cl-info/issues">https://github.com/40ants/cl-info/issues</a></p></li><li><p>Source control: <a href="https://github.com/40ants/cl-info">GIT</a></p></li></ul><p><a href="https://github.com/40ants/cl-info/actions"><img src="https://github-actions.40ants.com/40ants/cl-info/matrix.svg?only=ci.run-tests"/></a></p><p><img src="http://quickdocs.org/badge/cl-info.svg"/></p><p>This is a small utility, useful to display information about you Common
+Lisp environment. You might want to call it in the <code>CI</code> pipeline or
+to use it when rendering a crash report in some client applications.</p><h2>Installation<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40INSTALLATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-40INSTALLATION-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h2><p>You can install this library from Quicklisp, but you want to receive updates quickly, then install it from Ultralisp.org:</p><pre><code class="">(ql-dist:install-dist &quot;http://dist.ultralisp.org/&quot;
+                      :prompt nil)
+(ql:quickload :cl-info)</code></pre><p>Or you can install the script using Roswell:</p><pre><code class="">ros install 40ants/cl-info</code></pre><h2>Usage<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40USAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-40USAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h2><h3 id="usage-from-common-lisp">Usage from Common Lisp</h3><p>It's main entry point is <a href="https://40ants.com/cl-info/#x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29" data-document="https://40ants.com/cl-info/" data-node="x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29"><code>cl-info:get-cl-info</code></a> function. It returns an object with
+customized <code>PRINT-OBJECT</code> method. You can use it to output debug
+information in your programs.</p><p><code>cl-info</code> (<a href="https://40ants.com/cl-info/#x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22CL-INFO-22-29-20PACKAGE-29" data-document="https://40ants.com/cl-info/" data-node="x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22CL-INFO-22-29-20PACKAGE-29"><code>1</code></a> <a href="https://40ants.com/cl-info/#x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22cl-info-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29" data-document="https://40ants.com/cl-info/" data-node="x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22cl-info-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29"><code>2</code></a>) collects inforrmation about <code>OS</code>, Lisp Implementation, <code>ASDF</code>, installed
+Quicklisp distributions:</p><pre><code class="text">CL-USER&gt; (cl-info:get-cl-info)
+OS:   Darwin 15.6.0
+Lisp: SBCL 1.4.8
+ASDF: 3.3.1.1
+QL:   ceramic github-e0d905187946f8f2358f7b05e1ce87b302e34312
+      cl-prevalence github-c163c227ed85d430b82cb1e3502f72d4f88e3cfa
+      log4cl-json github-c4f786e252d89a45372186aaf32fb8e8736b444b
+      log4cl github-6a857b0b41c030a8a3b04096205e221baaa1755f
+      quicklisp 2018-04-30
+      slynk github-3314cf8c3021cb758e0e30fe3ece54accf1dcf3d
+      weblocks-lass github-1b043afbf2f3e84e495dfeae5e63fe67a435019f
+      weblocks-parenscript github-8ef4ca2f837403a05c4e9b92dcf1c41771d16f17
+      weblocks-ui github-5afdf238534d70edc2447d0bc8bc63da8e35999f
+      weblocks-websocket github-b098db7f179dce3bfb045afd4e35e7cc868893f0
+      weblocks github-282483f97d6ca351265ebfebb017867c295d01ad
+      websocket-driver github-a3046b11dfb9803ac3bff7734dd017390c2b54bb
+CL-USER&gt;
+</code></pre><p>Also, you can gather information about separate systems using <a href="https://40ants.com/cl-info/#x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29" data-document="https://40ants.com/cl-info/" data-node="x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29"><code>cl-info:get-system-info</code></a>
+function:</p><pre><code class="text">CL-USER&gt; (cl-info:get-system-info :hamcrest)
+System: HAMCREST 0.4.2
+       /Users/art/common-lisp/cl-hamcrest/src/
+</code></pre><h3 id="usage-from-command-line">Usage From Command-line</h3><p>Also, you can use <code>cl-info</code> (<a href="https://40ants.com/cl-info/#x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22CL-INFO-22-29-20PACKAGE-29" data-document="https://40ants.com/cl-info/" data-node="x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22CL-INFO-22-29-20PACKAGE-29"><code>1</code></a> <a href="https://40ants.com/cl-info/#x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22cl-info-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29" data-document="https://40ants.com/cl-info/" data-node="x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22cl-info-22-29-20ASDF-2FSYSTEM-3ASYSTEM-29"><code>2</code></a>) as a command-line utility. It is useful to
+output information about common lisp environment running on <code>CI</code> server.</p><p>Here is how to do it:</p><pre><code class="shell"># Here we use a Roswell, to install utility
+[art@art-osx:~]% ros install 40ants/cl-info
+   
+# And now request information about lisp and some systems
+[art@art-osx:~]% cl-info weblocks clack jonathan some-other-system
+OS:   Darwin 15.6.0
+Lisp: Clozure Common Lisp Version 1.11.5/v1.11.5  (DarwinX8664)
+ASDF: 3.3.1.1
+QL:   org.borodust.bodge 20180214223017
+      quicklisp 2017-10-23
+System: weblocks 0.31.1
+        /Users/art/common-lisp/weblocks/src/
+System: clack 2.0.0
+        /Users/art/common-lisp/clack/
+System: jonathan 0.1
+        /Users/art/.roswell/lisp/quicklisp/dists/quicklisp/software/jonathan-20170630-git/
+System: some-other-system is not available</code></pre><h2>API<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40API-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-40API-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h2><h3>CL-INFO<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-3FPACKAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-3FPACKAGE-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h3><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L1">package</a><div class=reference-object><div class=object-name><a href=#x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22CL-INFO-22-29-20PACKAGE-29 id=x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22CL-INFO-22-29-20PACKAGE-29>cl-info</a></div></div><a class=bullet-link href=#x-28-23A-28-287-29-20BASE-CHAR-20-2E-20-22CL-INFO-22-29-20PACKAGE-29></a></div></div><h4>Classes<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FClasses-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FClasses-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h4><h5>CL-INFO<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24CL-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24CL-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h5><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L21">class</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3ACL-INFO-20CLASS-29 id=x-28CL-INFO-3ACL-INFO-20CLASS-29>cl-info:cl-info</a></div><div class=object-args><span class=locative-args></span></div></div><a class=bullet-link href=#x-28CL-INFO-3ACL-INFO-20CLASS-29></a></div></div><p><b>Readers</b></p><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L22">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-ASDF-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29 id=x-28CL-INFO-3AGET-ASDF-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29>cl-info:get-asdf-version</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(= (asdf/upgrade:asdf-version))</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-ASDF-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29></a></div><div class=bullet-content><p>Returns <code>ASDF</code> version.</p></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L25">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-LISP-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29 id=x-28CL-INFO-3AGET-LISP-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29>cl-info:get-lisp-type</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(= (lisp-implementation-type))</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-LISP-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29></a></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L27">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-LISP-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29 id=x-28CL-INFO-3AGET-LISP-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29>cl-info:get-lisp-version</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(= (lisp-implementation-version))</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-LISP-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29></a></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L34">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-QL-DISTS-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29 id=x-28CL-INFO-3AGET-QL-DISTS-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29>cl-info:get-ql-dists</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(= (ql-dist:all-dists))</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-QL-DISTS-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29></a></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L29">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-SOFTWARE-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29 id=x-28CL-INFO-3AGET-SOFTWARE-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29>cl-info:get-software-type</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(= (software-type))</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-SOFTWARE-TYPE-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29></a></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L31">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-SOFTWARE-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29 id=x-28CL-INFO-3AGET-SOFTWARE-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29>cl-info:get-software-version</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(= (software-version))</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-SOFTWARE-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ACL-INFO-29-29></a></div></div><h5>SYSTEM-INFO<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24SYSTEM-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-40CL-INFO-24SYSTEM-INFO-3FCLASS-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h5><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L43">class</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3ASYSTEM-INFO-20CLASS-29 id=x-28CL-INFO-3ASYSTEM-INFO-20CLASS-29>cl-info:system-info</a></div><div class=object-args><span class=locative-args></span></div></div><a class=bullet-link href=#x-28CL-INFO-3ASYSTEM-INFO-20CLASS-29></a></div></div><p><b>Readers</b></p><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L50">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AABSENT-P-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29 id=x-28CL-INFO-3AABSENT-P-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29>cl-info:absent-p</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(:absent = nil)</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AABSENT-P-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29></a></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L44">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-NAME-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29 id=x-28CL-INFO-3AGET-NAME-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29>cl-info:get-name</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(:name)</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-NAME-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29></a></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L48">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-PATH-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29 id=x-28CL-INFO-3AGET-PATH-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29>cl-info:get-path</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(:path)</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-PATH-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29></a></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L46">reader</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29 id=x-28CL-INFO-3AGET-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29>cl-info:get-version</a></div><div class=object-args><span class=locative-args></span><span class=locative-args>(:version)</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-VERSION-20-2840ANTS-DOC-2FLOCATIVES-3AREADER-20CL-INFO-3ASYSTEM-INFO-29-29></a></div></div><h4>Functions<a class=header-link
+     href=#x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FFunctions-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29
+     title="Permalink to this headline"
+     id=x-28CL-INFO-DOCS-2FINDEX-3A-3A-7C-40CL-INFO-3FFunctions-SECTION-7C-2040ANTS-DOC-2FLOCATIVES-3ASECTION-29></a></h4><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L93">function</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29 id=x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29>cl-info:get-cl-info</a></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-CL-INFO-20FUNCTION-29></a></div><div class=bullet-content><p>Returns information about lisp implementation, asdf and quicklisp.</p></div></div><div class=reference-bullet><div class=reference-bullet-header><a class=locative-type href="https://github.com/40ants/cl-info/blob/b968de002e83818b16d30f4918a3210f1ffdf7fb/src/core.lisp#L98">function</a><div class=reference-object><div class=object-name><a href=#x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29 id=x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29>cl-info:get-system-info</a></div><div class=object-args><span class=locative-args>system-name</span></div></div><a class=bullet-link href=#x-28CL-INFO-3AGET-SYSTEM-INFO-20FUNCTION-29></a></div></div>
+   </div><div class=footer>
+    <hr class=separator>
+    <p class=fineprint>Created with passion by <em>40Ants</em><a class=lisp-logo
+     href="http://lisp-lang.org/">
+      <img
+           src="https://40ants.com/img/made-with-lisp.svg"></a>
+   </div>
+  </div>
+ </body>
+</html>
