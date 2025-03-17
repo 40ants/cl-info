@@ -29,7 +29,6 @@
             },
             {
               "os": "macos-latest",
-              "quicklisp": "ultralisp",
               "lisp": "clisp"
             },
             {

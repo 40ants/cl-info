@@ -5,8 +5,4 @@
 ("ultralisp" .
  (:class qlot/source/dist:source-dist
   :initargs (:distribution "https://dist.ultralisp.org" :%version :latest)
-  :version "20250307033500"))
-("bordeaux-threads" .
- (:class qlot/source/github:source-github
-  :initargs (:repos "svetlyak40wt/bordeaux-threads" :ref nil :branch "fix-apiv2-for-no-threads" :tag nil)
-  :version "github-29a839d1db25d86b18c0caad50036da9481b064b"))
+  :version "20250317183500"))
