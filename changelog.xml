@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rss version="2.0">
+    <channel>
+        <title>cl-info-docs ChangeLog</title>
+        <link>https://40ants.com/cl-info/</link>
+        <generator>xml-emitter</generator>
+        <language>en-us</language>
+        <item>
+            <title>0.5.0  (2025-03-07)</title>
+            <description>&lt;p&gt;New systems for &lt;code&gt;CI&lt;/code&gt; and docs. Also, documentation section were moved from the core system to not bring unnecessary dependencies.&lt;/p&gt;</description>
+            <pubDate>Fri, 07 Mar 2025 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>0.4.1  (2021-05-08)</title>
+            <description>&lt;p&gt;Roswell script was fixed to work with latest &lt;code&gt;DEFMAIN&lt;/code&gt;.&lt;/p&gt;</description>
+            <pubDate>Sat, 08 May 2021 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>0.4.0  (2019-07-19)</title>
+            <description>&lt;p&gt;Now cl-info is able to work without Quicklisp client.&lt;/p&gt;&lt;p&gt;Also:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;make-cl-info&lt;/code&gt; was renamed to &lt;code&gt;get-cl-info&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;code&gt;make-system-info&lt;/code&gt; was renamed to &lt;code&gt;get-system-info&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</description>
+            <pubDate>Fri, 19 Jul 2019 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>0.3.0  (2018-06-17)</title>
+            <description>&lt;p&gt;Fixed handling of &lt;code&gt;ASDF/PLAN:SYSTEM-OUT-OF-DATE&lt;/code&gt; error, when
+displaying information about installed systems.&lt;/p&gt;&lt;p&gt;Added normal &lt;code&gt;README&lt;/code&gt; file with examples.&lt;/p&gt;</description>
+            <pubDate>Sun, 17 Jun 2018 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>0.2.0  (2018-06-04)</title>
+            <description>&lt;ul&gt;&lt;li&gt;&lt;p&gt;System now explicitly requires &lt;code&gt;ASDF&lt;/code&gt; &amp;gt;= 3.1.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</description>
+            <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+        </item>
+        <item>
+            <title>0.1.0  (2018-06-03)</title>
+            <description>&lt;ul&gt;&lt;li&gt;&lt;p&gt;Initial version.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</description>
+            <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+        </item>
+    </channel>
+</rss>
