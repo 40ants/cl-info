@@ -1,1 +1,3 @@
 dist ultralisp http://dist.ultralisp.org
+
+git serapeum git@github.com:svetlyak40wt/serapeum.git :branch fix-for-ecl
