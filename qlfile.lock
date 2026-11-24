@@ -6,3 +6,7 @@
  (:class qlot/source/dist:source-dist
   :initargs (:distribution "https://dist.ultralisp.org" :%version :latest)
   :version "20261119062000"))
+("serapeum" .
+ (:class qlot/source/git:source-git
+  :initargs (:remote-url "git@github.com:svetlyak40wt/serapeum.git" :branch "fix-for-ecl")
+  :version "git-c7184e509f7fdc42f0d695b02dea9ed146a2b73b"))
